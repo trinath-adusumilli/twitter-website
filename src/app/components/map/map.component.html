@@ -1,0 +1,14 @@
+<mat-card class="mat-elevation-z8">
+<div>
+    <mat-radio-group aria-label="Select an option" (change)="createMap($event.value)">
+        <mat-radio-button value="positive" checked="true">Positive</mat-radio-button>
+        <mat-radio-button value="negative">Negative</mat-radio-button>
+        <mat-radio-button value="probable">Probable</mat-radio-button>
+    </mat-radio-group>
+</div>
+<mat-card-title>Cases by States</mat-card-title>
+<div id="mapdiv" style="width: 100%; height: 500px"><span style="float:right;margin-right: 120px; margin-left: 5px;"> - No Value</span><span style="float: right; background-color: #548dcc; width: 30px; height: 20px;"></span></div>
+
+
+</mat-card>
+<app-line-chart></app-line-chart>

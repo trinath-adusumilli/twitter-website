@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'covid-portal';
+
+  links = [
+    {text: 'Labelling', route: ''},
+    {text: 'Labelled Data', route: ''},
+    {text: 'Status', route: ''},
+    {text: 'Related Words', route: ''},
+    {text: 'Map', route: 'map'},
+    {text: 'Logout', route: ''}
+  ];
+  activeLink = this.links[0].text;
+
 }
