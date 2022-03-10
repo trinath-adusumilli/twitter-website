@@ -10,6 +10,6 @@ export class TwitterDataService {
   constructor(private http:HttpClient) { }
 
   getSource(): any {
-    return this.http.get<TwitterData[]>("https://8080-28b90df4-0fad-4eb7-9f0c-d9cb88edade9.cs-us-central1-pits.cloudshell.dev/source?key=source");
+    return this.http.get<TwitterData[]>("https://twitter-data-backend.uc.r.appspot.com/source?key=source");
   }
 }
