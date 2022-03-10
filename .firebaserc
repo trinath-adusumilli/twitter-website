@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "twitter-website-90b4a": {
+      "hosting": {
+        "covid-portal": [
+          "twitter-website-90b4a"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "twitter-website-90b4a"
+  }
+}

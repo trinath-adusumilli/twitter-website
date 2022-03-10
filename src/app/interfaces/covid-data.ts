@@ -6,7 +6,7 @@ export interface CovidData {
     negative?: number
 }
 
-export interface Test {
-    id: string,
+export interface TwitterData {
+    key: string,
     value?:number
 }
