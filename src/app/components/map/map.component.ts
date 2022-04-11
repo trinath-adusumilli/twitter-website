@@ -114,7 +114,22 @@ export class MapComponent implements OnInit {
       this.createMap("positive");
     });
 
+   // this.trackingSevice.readJson();
+
   }
+
+  fileUpload(event: any) {
+    console.log('upload') ;
+    var reader = new FileReader(); 
+    reader.readAsText(event.srcElement.files[0]); 
+    console.log('start');
+    reader.onload = function () { 
+      console.log('load-start');
+      console.log(reader.result); 
+      console.log('load-end');
+    } 
+    console.log('end');
+  } 
 
 
 

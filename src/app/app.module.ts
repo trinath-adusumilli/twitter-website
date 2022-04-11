@@ -11,12 +11,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LineChartComponent } from './components/line-chart/line-chart.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
+import { RelatedWordsGraphComponent } from './components/related-words-graph/related-words-graph.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MapComponent,
-    LineChartComponent
+    LineChartComponent,
+    RelatedWordsGraphComponent
   ],
   imports: [
     BrowserModule,
