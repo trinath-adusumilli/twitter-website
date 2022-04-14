@@ -26,4 +26,13 @@ export class CovidTrackingService {
     // return covidData;
     return this.http.get<CovidData[]>("https://api.covidtracking.com/v1/states/current.json");
   }
+
+  //readJson(){
+    //this.http.get('./assets/tweetWeb.json').subscribe(data => console.log(data));
+   // var file = new File([],'C:\\Users\\saiak\\Downloads\\tweetWeb.json');
+   // var fileReader = new FileReader();
+    //fileReader.
+    //file.text().then(d => {console.log(d.toString()); console.log(d.length);})
+
+  //}
 }
