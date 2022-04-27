@@ -7,3 +7,16 @@
     <mat-card-title> Top 20 sources </mat-card-title>
     <div id="graphdiv" style="width: 100%; height: 600px"></div>
 </mat-card>
+
+<mat-card class="mat-elevation-z8">
+    <mat-card-title> Model Label Result </mat-card-title>
+    <mat-form-field appearance="fill">
+        <mat-label>Select a period</mat-label>
+        <mat-select disableRipple value="1" (selectionChange)="updateWeeklyAvgChart($event)">
+          <mat-option value="1" selected>Last 1 year</mat-option>
+          <mat-option value="2">Last 2 years</mat-option>
+          <mat-option value="">All</mat-option>
+        </mat-select>
+      </mat-form-field>
+    <div id="weeklyAvgdiv" style="width: 100%; height: 600px"></div>
+</mat-card>

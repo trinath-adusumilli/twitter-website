@@ -21,7 +21,7 @@ export class LineChartComponent implements OnInit {
   constructor(private twitterService : TwitterDataService) { }
 
   ngOnInit(): void {
-
+    this.getWeeklyAvgData('1'); 
     this.getdata();
     this.getTwitterData();
     this.date = new Date(this.twitterData[0]['date']);
@@ -227,6 +227,7 @@ export class LineChartComponent implements OnInit {
     }));
 
     let data = this.generateDatas();
+    console.log(data);
     series.data.setAll(data);
 
     // Make stuff animate on load
@@ -256,6 +257,148 @@ export class LineChartComponent implements OnInit {
       this.TwitterData = dt;
       this.createGraph();
     });
+  }
+
+  updateWeeklyAvgChart(period: any){
+    this.getWeeklyAvgData(period.value);
+  }
+
+  getWeeklyAvgData(period: string){
+    this.weeklyAvgData = [];
+    
+    this.twitterService.getWeeklyAvgPositiveCases(period).subscribe((dt: any[]) => {      
+      
+      dt.forEach(element => {
+        this.weeklyAvgData.push({
+          //date: new Date(element.date).getTime(),
+          weekRange: new Date(element.startDate).toDateString() + ' - ' + new Date(element.endDate).toDateString(),
+          week: element.weekNumber + ', ' + element.year,
+          year: element.year,
+          total: +element.average
+        });
+      });
+    
+      this.createWeeklyAvgGraph();
+    });
+  }
+  //root: any;
+  weeklyAvgData: any[] = [];
+  weeklyRoot: any;
+
+  createWeeklyAvgGraph(){
+   // am5.disposeAllRootElements();
+   
+    if(this.weeklyRoot != null)
+      this.weeklyRoot.dispose();
+  
+
+    let root = am5.Root.new("weeklyAvgdiv");
+      // Set themes
+      root.setThemes([
+        am5themes_Animated.new(root)
+      ]);
+      
+      
+      // Create chart
+      let chart = root.container.children.push(am5xy.XYChart.new(root, {
+        panX: true,
+        panY: true,
+        wheelX: "panX",
+        wheelY: "zoomX"
+      }));
+  
+      // Add cursor
+      let cursor = chart.set("cursor", am5xy.XYCursor.new(root, {
+        behavior: "none"
+      }));
+      cursor.lineY.set("visible", false);
+      
+      // Create axes
+      let xRenderer = am5xy.AxisRendererX.new(root, {
+        pan: "zoom"
+      });
+
+      xRenderer.grid.template.set('opacity', 0);
+  
+      let xAxis = chart.xAxes.push(am5xy.CategoryAxis.new(root, {
+
+        categoryField: "week",
+        renderer: xRenderer,
+        tooltip: am5.Tooltip.new(root, {labelText: "{weekRange}"})
+      }));
+  
+      xAxis.children.push(
+        am5.Label.new(root, {
+          text: "Week",
+          x: am5.p50,
+          centerX:am5.p50,
+          fontSize: 20,
+          fontWeight: '500'
+        })
+      ); 
+  
+      let yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+        maxDeviation: 1,
+        renderer: am5xy.AxisRendererY.new(root, {
+          pan: "zoom"
+        })
+      }));
+  
+
+      yAxis.children.unshift(
+        am5.Label.new(root, {
+          rotation: -90,
+          text: "Average number of tweets",
+          y: am5.p50,
+          centerX: am5.p50,
+          fontSize: 20,
+          fontWeight: '500'
+        })
+      );
+            
+      
+      // series.columns.template.setAll({ cornerRadiusTL: 5, cornerRadiusTR: 5 });
+      let series = chart.series.push(am5xy.LineSeries.new(root, {
+        calculateAggregates: true,
+        xAxis: xAxis,
+        yAxis: yAxis,
+        valueYField: "total",
+        categoryXField: "week",
+        tooltip: am5.Tooltip.new(root, {
+          labelText: "{valueY}"
+        })
+      }));
+  
+      series.fills.template.setAll({
+        visible: true,
+        fillOpacity: 0.2
+      });
+  
+      series.bullets.push(function () {
+        return am5.Bullet.new(root, {
+          locationY: 0,
+          sprite: am5.Circle.new(root, {
+            radius: 4,
+            stroke: root.interfaceColors.get("background"),
+            strokeWidth: 2,
+            fill: series.get("fill")
+          })
+        });
+      });
+  
+      // Add scrollbar
+      chart.set("scrollbarX", am5.Scrollbar.new(root, {
+        orientation: "horizontal"
+      }));
+            
+      series.data.setAll(this.weeklyAvgData);
+      xAxis.data.setAll(this.weeklyAvgData);
+      
+      // Make stuff animate on load
+      series.appear(1000);
+      chart.appear(1000, 100);
+
+      this.weeklyRoot = root;
   }
 
   getdata(): any[]{

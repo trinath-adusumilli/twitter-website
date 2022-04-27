@@ -1,0 +1,74 @@
+mat-card{
+    width:95%;
+    margin: auto;
+    text-align: center;
+    min-height: 100%;
+    //background-color: lightblue;
+    background-image: url('../../../assets/images/relatedWords.jpg');
+}
+
+mat-form-field{
+    width: 50%;
+    padding: 10px;
+    //border: 1px solid gray;
+    //border-radius: 25px;
+    border: 0px;
+    margin-bottom: 20px;
+    //display: flex;
+}
+
+.mat-form-field-infix{
+    border-top: 0px;
+    background-color: white !important;
+}
+::ng-deep .mat-form-field-flex{
+    background-color: white !important;
+}
+input{
+    width: 75%;
+    font-size: 25px;
+}
+
+mat-error{
+    font-size: 16px;
+}
+
+table{
+    width: 60%;
+    margin: auto;
+    text-align: left;
+    font-size: 25px;
+}
+
+th{
+    font-size: 20px;
+    font-weight: 500;
+    background-color: black;
+    color: white;
+    text-align: center !important;
+}
+td{
+    font-size: 20px;
+    text-align: center;
+}
+
+button{
+    float: right;
+    color: lightgray;
+    background: black !important;
+}
+
+h1{
+    font-weight: 500;
+    font-size: 30px;
+    padding: 20px;
+    color: white;
+}
+
+.mat-row:nth-child(even){
+    background-color: lightgray;
+}
+        
+.mat-row:nth-child(odd){
+    background-color: white;
+}
