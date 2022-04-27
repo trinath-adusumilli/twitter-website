@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RelatedWordsGraphComponent } from './related-words-graph.component';
+import { RelatedWordsComponent } from './related-words.component';
 
-describe('RelatedWordsGraphComponent', () => {
-  let component: RelatedWordsGraphComponent;
-  let fixture: ComponentFixture<RelatedWordsGraphComponent>;
+describe('RelatedWordsComponent', () => {
+  let component: RelatedWordsComponent;
+  let fixture: ComponentFixture<RelatedWordsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RelatedWordsGraphComponent ]
+      declarations: [ RelatedWordsComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RelatedWordsGraphComponent);
+    fixture = TestBed.createComponent(RelatedWordsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
