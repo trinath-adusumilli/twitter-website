@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import { RelatedWords } from 'src/app/interfaces/related-words';
 import { TwitterDataService } from 'src/app/services/twitter-data.service';
-import { TwitterMlService } from 'src/app/services/twitter-ml.service';
+//import { TwitterMlService } from 'src/app/services/twitter-ml.service';
 
 @Component({
   selector: 'app-related-words',
@@ -13,7 +13,7 @@ export class RelatedWordsComponent implements OnInit {
 
   value = '';
 
-  constructor(private fb: FormBuilder, private mlService: TwitterMlService, private twitterDataService : TwitterDataService) { }
+  constructor(private fb: FormBuilder, private twitterDataService : TwitterDataService) { }
 
   // relatedWordsForm = new FormGroup({
   //   first: new FormControl('first name'),
