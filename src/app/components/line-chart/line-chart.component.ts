@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as am5 from '@amcharts/amcharts5/';
 import * as am5xy from '@amcharts/amcharts5/xy';
-import am5themes_Animated from '@amcharts/amcharts5/themes/animated';
+//import am5themes_Animated from '@amcharts/amcharts5/themes/animated';
 import { TwitterData } from 'src/app/interfaces/covid-data';
 import { TwitterDataService } from 'src/app/services/twitter-data.service';
 
@@ -37,10 +37,10 @@ export class LineChartComponent implements OnInit {
     this.barRoot = am5.Root.new("graphdiv");
 
 
-      // Set themes
-      this.barRoot.setThemes([
-        am5themes_Animated.new(this.barRoot)
-      ]);
+      //Set themes
+      // this.barRoot.setThemes([
+      //   am5themes_Animated.new(this.barRoot)
+      // ]);
       
       
       // Create chart
@@ -129,9 +129,9 @@ export class LineChartComponent implements OnInit {
     let root = am5.Root.new("chartdiv");
 
     // Set themes
-    root.setThemes([
-      am5themes_Animated.new(root)
-    ]);
+    // root.setThemes([
+    //   am5themes_Animated.new(root)
+    // ]);
 
     // Create chart
     let chart = root.container.children.push(am5xy.XYChart.new(root, {
@@ -294,9 +294,9 @@ export class LineChartComponent implements OnInit {
 
     let root = am5.Root.new("weeklyAvgdiv");
       // Set themes
-      root.setThemes([
-        am5themes_Animated.new(root)
-      ]);
+      // root.setThemes([
+      //   am5themes_Animated.new(root)
+      // ]);
       
       
       // Create chart
